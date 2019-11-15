@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block body %}
+     <div class="row">
+        <div class="col-md-6">
+            <h2 class="mt-1 mb-0">Residential Count by Quadrant</h2>
+            <div class="chart mt-0" id="count-type1">
+            </div>
+        </div>
+    
+        <div class="col-md-6">
+            <h2 class="mt-1 mb-0">Residential Count by Ward</h2>
+            <div class="chart mt-0" id="count-type2">
+            </div>
+        </div>
+    </div>
+    <script>
+        var count_type1 = {{data | safe}}
+        var count_type2 = {{data2 | safe}}
+        Plotly.plot('count-type1',count_type1,{})
+        Plotly.plot('count-type2',count_type2,{})
+    </script>
+{% endblock body %}

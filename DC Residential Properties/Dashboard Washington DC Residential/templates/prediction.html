@@ -1,0 +1,125 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <div class="container pt 5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-3">
+                <h2 class="display-4">Prediction Here</h2>
+                <header class="h5">Select Location</header>
+                <form action="/" method="POST">
+                    <!-- Select Location (Quadrant,Ward,Neighborhood) -->
+                    <select class="form-control form-control-sm mt-2" name="QUADRANT" id="">
+                        <option value="" disabled selected>Select Quadrant</option>
+                        {% for item in data_quadrant %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                    </select>
+                    <select class="form-control form-control-sm mt-2" name="WARD" id="">
+                        <option value="" disabled selected>Select Ward</option>
+                        {% for item in data_ward %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                    </select>
+                    <select class="form-control form-control-sm mt-2" name="ASSESSMENT_NBHD" id="">
+                        <option value="" disabled selected>Select Neighborhood</option>
+                        {% for item in data_neighborhood %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                    </select>
+                    <!-- Select Type Residential -->
+                    <header class="mt-2 h5">Select Type</header>
+                    <select class="form-control form-control-sm mt-2" name="STYLE" id="">
+                        <option value="" disabled selected>Select Style</option>
+                        {% for item in data_style %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                    </select>
+                    <select class="form-control form-control-sm mt-2" name="STRUCT" id="">
+                        <option value="" disabled selected>Select Structure</option>
+                        {% for item in data_struct %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                    </select>
+                    <select class="form-control form-control-sm mt-2" name="EXTWALL" id="">
+                        <option value="" disabled selected>Select Exterior Wall</option>
+                        {% for item in data_ext %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                    </select>
+                    <select class="form-control form-control-sm mt-2" name="INTWALL" id="">
+                        <option value="" disabled selected>Select Interior Wall</option>
+                        {% for item in data_int %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                    </select>
+                    <select class="form-control form-control-sm mt-2" name="ROOF" id="">
+                        <option value="" disabled selected>Select Type Roof</option>
+                        {% for item in data_roof %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                    </select>
+                    <!-- Select Criteria -->
+                    <header class="mt-2 h5">Select Criteria </header>
+                    <select class="form-control form-control-sm mt-2" name="GRADE" id="">
+                        <option value="" disabled selected>Select Grade</option>
+                        {% for item in data_grade %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                    </select>
+                    <select class="form-control form-control-sm mt-2" name="CNDTN" id="">
+                        <option value="" disabled selected>Select Condition</option>
+                        {% for item in data_condition %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                    </select>
+                    <select class="form-control form-control-sm mt-2" name="QUALIFIED" id="">
+                        <option value="" disabled selected>Select Qualified</option>
+                        {% for item in data_qualified %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                    </select>
+                    <!-- Select -->
+                    <header class="mt-2 h5">Select Facility</header>
+                    <!-- Units -->
+                    <input type="number" name="NUM_UNITS" max='2' min="0" placeholder="number of Units" class="form-control form-control-sm mt-2">
+                    <!-- Building Number -->
+                    <input type="number" name="BLDG_NUM" max='2' min="0" placeholder="number of Building" class="form-control form-control-sm mt-2">
+                    <!-- ROoms -->
+                    <input type="number" name="ROOMS" max='30' min="0" placeholder="number of Rooms" class="form-control form-control-sm mt-2">
+                    <!-- Bedroom -->
+                    <input type="number" name="BEDRM" max='15' min="0" placeholder="number of Bedroom" class="form-control form-control-sm mt-2">
+                    <!-- Bathrooms -->
+                    <input type="number" name="BATHRM" max='11' min="0" placeholder="number of Bathrooms" class="form-control form-control-sm mt-2">
+                     <!-- Half Bathrooms -->
+                    <input type="number" name="HF_BATHRM" max='11' min="0" placeholder="number of Half Bathrooms" class="form-control form-control-sm mt-2">
+                     <!-- Kitchens -->
+                    <input type="number" name="KITCHENS" max='11' min="0" placeholder="number of Kitchens" class="form-control form-control-sm mt-2">
+                      <!-- AC -->
+                    <select class="form-control form-control-sm mt-2" name="AC" id="">
+                      <option value="" disabled selected>Select AC</option>
+                      {% for item in data_ac %}
+                          <option value="{{item}}"> {{item}} </option>
+                      {% endfor %}
+                    </select>
+                    <select class="form-control form-control-sm mt-2" name="HEAT" id="">
+                        <option value="" disabled selected>Select Heater </option>
+                        {% for item in data_heat %}
+                            <option value="{{item}}"> {{item}} </option>
+                        {% endfor %}
+                      </select>
+                     <!-- Fireplaces -->
+                    <input type="number" name="FIREPLACES" max='11' min="0" placeholder="number of Fireplaces" class="form-control form-control-sm mt-2">       
+                    
+                    <header class="mt-2">Select Size & Residential Remodel</header>
+                     <!-- Land Area -->
+                    <input type="number" name="LANDAREA" placeholder="Land Area (meter square)" class="form-control form-control-sm mt-2">
+                     <!-- GBA -->
+                    <input type="number" name="GBA" placeholder="Gross Building Area (meter square)" class="form-control form-control-sm mt-2">
+                     <!-- Land Area -->
+                    <input type="number" name="YR_RMDL" min="1880" max="2019" placeholder="Year Remodel " class="form-control form-control-sm mt-2">
+
+                    <button type="submit" class="btn btn-danger mt-3"> Predict </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
